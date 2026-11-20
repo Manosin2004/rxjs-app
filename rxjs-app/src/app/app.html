@@ -1,0 +1,16 @@
+<h1>🎬 Movie Search</h1>
+<input [formControl]="search" placeholder="Search movies..." />
+
+<ul>
+  @for (m of movies$ | async; track m.id) {
+    <li>
+      <div class="title">{{ m.title }}</div>
+      <div class="meta">
+        <span>{{ m.genre }} • {{ m.year }}</span>
+        <span class="rating">⭐ {{ m.rating }}</span>
+      </div>
+    </li>
+  } @empty {
+    <li>No movies found</li>
+  }
+</ul>
